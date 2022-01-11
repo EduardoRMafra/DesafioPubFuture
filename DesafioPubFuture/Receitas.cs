@@ -10,12 +10,16 @@ using System.Windows.Forms;
 
 namespace DesafioPubFuture
 {
-    public partial class Form1 : Form
+    public partial class Receitas : Form
     {
-        public Form1()
+        public Receitas()
         {
             InitializeComponent();
         }
 
+        private void btnCadastrar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
