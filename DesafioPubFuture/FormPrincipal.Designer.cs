@@ -177,6 +177,7 @@ namespace DesafioPubFuture
             this.btnCadastrar.TabIndex = 0;
             this.btnCadastrar.Text = "Cadastrar";
             this.btnCadastrar.UseVisualStyleBackColor = true;
+            this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
             // 
             // brnEditar
             // 
@@ -187,6 +188,7 @@ namespace DesafioPubFuture
             this.brnEditar.TabIndex = 1;
             this.brnEditar.Text = "Editar";
             this.brnEditar.UseVisualStyleBackColor = true;
+            this.brnEditar.Click += new System.EventHandler(this.brnEditar_Click);
             // 
             // btnRemover
             // 
@@ -197,6 +199,7 @@ namespace DesafioPubFuture
             this.btnRemover.TabIndex = 2;
             this.btnRemover.Text = "Remover";
             this.btnRemover.UseVisualStyleBackColor = true;
+            this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
             // 
             // btnTransferir
             // 
@@ -237,7 +240,7 @@ namespace DesafioPubFuture
         private System.Windows.Forms.Button brnEditar;
         private System.Windows.Forms.Button btnRemover;
         private System.Windows.Forms.Button btnTransferir;
-        private System.Windows.Forms.DataGridView dtContas;
+        public System.Windows.Forms.DataGridView dtContas;
     }
 }
 

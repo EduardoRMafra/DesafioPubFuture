@@ -15,7 +15,8 @@ namespace DesafioPubFuture
         public Receitas()
         {
             InitializeComponent();
-            dtReceitas.DataSource = BancoDados.ObterTabela("tb_receitas");
+            BancoDados.GetFormReceitas(this);
+            dtReceitas.DataSource = BancoDados.ComandoTabela("SELECT * FROM tb_receitas");
         }
         private void btnCadastrar_Click(object sender, EventArgs e)
         {

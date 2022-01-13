@@ -115,6 +115,7 @@ namespace DesafioPubFuture
             this.btnRemover.TabIndex = 2;
             this.btnRemover.Text = "Remover";
             this.btnRemover.UseVisualStyleBackColor = true;
+            this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
             // 
             // btnTransferir
             // 
@@ -143,12 +144,11 @@ namespace DesafioPubFuture
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dtDespesas;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button btnCadastrar;
         private System.Windows.Forms.Button brnEditar;
         private System.Windows.Forms.Button btnRemover;
         private System.Windows.Forms.Button btnTransferir;
+        public System.Windows.Forms.DataGridView dtDespesas;
     }
 }

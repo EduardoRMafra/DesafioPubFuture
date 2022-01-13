@@ -10,4 +10,19 @@
     <PackageReference Include="System.Data.SQLite.Core" Version="1.0.115.5" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="EditarContasForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="CadastroContasForm - Cópia.Designer.cs">
+      <DependentUpon>CadastroContasForm.Designer.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="CadastroContasForm - Cópia.resx">
+      <DependentUpon>CadastroContasForm.resx</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>

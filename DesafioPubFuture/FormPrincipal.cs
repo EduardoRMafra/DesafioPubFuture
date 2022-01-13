@@ -18,7 +18,8 @@ namespace DesafioPubFuture
         {
             InitializeComponent();
             btnContas.BackColor = Color.Yellow;
-            dtContas.DataSource = BancoDados.ObterTabela("tb_contas");
+            BancoDados.GetFormPrincipal(this);
+            dtContas.DataSource = BancoDados.ComandoTabela("SELECT * FROM tb_contas");
         }
 
         void MostrarForm(Form frm)
@@ -65,6 +66,24 @@ namespace DesafioPubFuture
             BtnAtivo(btnDespesas);
             FecharFormAtivo();
             MostrarForm(new Despesas());
+        }
+
+        private void btnCadastrar_Click(object sender, EventArgs e)
+        {
+            CadastroContasForm c = new CadastroContasForm();
+            c.ShowDialog();
+        }
+
+        private void brnEditar_Click(object sender, EventArgs e)
+        {
+            EditarContasForm ed = new EditarContasForm();
+            ed.ShowDialog();
+        }
+
+        private void btnRemover_Click(object sender, EventArgs e)
+        {
+            RemoverContasForm r = new RemoverContasForm();
+            r.ShowDialog();
         }
     }
 }
