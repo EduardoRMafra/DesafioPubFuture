@@ -13,25 +13,26 @@ namespace DesafioPubFuture
     public partial class FormPrincipal : Form
     {
 
-        Form FrmAtivo;  //indica a pagina que o usuario está no momento (Contas, Receitas, Despesas)
+        Form FrmAtivo;                       //indica a pagina que o usuario está no momento (Contas, Receitas, Despesas)
         public FormPrincipal()
         {
             InitializeComponent();
             btnContas.BackColor = Color.Yellow;
+            dtContas.DataSource = BancoDados.ObterTabela("tb_contas");
         }
 
         void MostrarForm(Form frm)
         {
             FecharFormAtivo();
             FrmAtivo = frm;
-            frm.TopLevel = false;       //permite colocar o form no painel
-            frm.Dock = DockStyle.Fill;
+            frm.TopLevel = false;           //permite colocar o form no painel
+            frm.Dock = DockStyle.Fill;      //permite o form ser responsivo
             panelForm.Controls.Add(frm);    //coloca o form no painel
-            frm.Show(); //mostra o form
-            frm.BringToFront(); //traz o form para frente
+            frm.BringToFront();             //traz o form para frente
+            frm.Show();                     //mostra o form
         }
 
-        void FecharFormAtivo()
+        void FecharFormAtivo()              //caso algum form estiver aberto fecha
         {
             if(FrmAtivo != null)
             {

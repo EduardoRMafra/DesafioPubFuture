@@ -15,6 +15,11 @@ namespace DesafioPubFuture
         public Despesas()
         {
             InitializeComponent();
+            dtDespesas.DataSource = BancoDados.ObterTabela("tb_despesas");
+        }
+        private void btnCadastrar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
