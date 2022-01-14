@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DesafioPubFuture
+namespace DesafioPubFuture.Despesas
 {
-    public partial class Despesas : Form
+    public partial class DespesasForm : Form
     {
-        public Despesas()
+        public DespesasForm()
         {
             InitializeComponent();
             BancoDados.GetFormDespesas(this);

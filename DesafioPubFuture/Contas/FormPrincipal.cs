@@ -7,8 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DesafioPubFuture.Receitas;
+using DesafioPubFuture.Despesas;
 
-namespace DesafioPubFuture
+namespace DesafioPubFuture.Contas
 {
     public partial class FormPrincipal : Form
     {
@@ -58,14 +60,14 @@ namespace DesafioPubFuture
         {
             BtnAtivo(btnReceitas);
             FecharFormAtivo();
-            MostrarForm(new Receitas());
+            MostrarForm(new ReceitasForm());
         }
 
         private void btnDespesas_Click(object sender, EventArgs e)
         {
             BtnAtivo(btnDespesas);
             FecharFormAtivo();
-            MostrarForm(new Despesas());
+            MostrarForm(new DespesasForm());
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e)

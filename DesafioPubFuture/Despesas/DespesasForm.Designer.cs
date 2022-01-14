@@ -1,7 +1,7 @@
 ﻿
-namespace DesafioPubFuture
+namespace DesafioPubFuture.Despesas
 {
-    partial class Despesas
+    partial class DespesasForm
     {
         /// <summary>
         /// Required designer variable.
@@ -34,7 +34,6 @@ namespace DesafioPubFuture
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.brnEditar = new System.Windows.Forms.Button();
             this.btnRemover = new System.Windows.Forms.Button();
-            this.btnTransferir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtDespesas)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -68,19 +67,18 @@ namespace DesafioPubFuture
             // 
             this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.ColumnCount = 4;
+            this.tableLayoutPanel1.ColumnCount = 5;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.btnCadastrar, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.brnEditar, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnRemover, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.btnTransferir, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnRemover, 3, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(184, 64);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(354, 72);
             this.tableLayoutPanel1.TabIndex = 4;
@@ -88,9 +86,9 @@ namespace DesafioPubFuture
             // btnCadastrar
             // 
             this.btnCadastrar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnCadastrar.Location = new System.Drawing.Point(80, 3);
+            this.btnCadastrar.Location = new System.Drawing.Point(30, 3);
             this.btnCadastrar.Name = "btnCadastrar";
-            this.btnCadastrar.Size = new System.Drawing.Size(94, 30);
+            this.btnCadastrar.Size = new System.Drawing.Size(94, 66);
             this.btnCadastrar.TabIndex = 0;
             this.btnCadastrar.Text = "Cadastrar";
             this.btnCadastrar.UseVisualStyleBackColor = true;
@@ -99,9 +97,9 @@ namespace DesafioPubFuture
             // brnEditar
             // 
             this.brnEditar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.brnEditar.Location = new System.Drawing.Point(180, 3);
+            this.brnEditar.Location = new System.Drawing.Point(130, 3);
             this.brnEditar.Name = "brnEditar";
-            this.brnEditar.Size = new System.Drawing.Size(94, 30);
+            this.brnEditar.Size = new System.Drawing.Size(94, 66);
             this.brnEditar.TabIndex = 1;
             this.brnEditar.Text = "Editar";
             this.brnEditar.UseVisualStyleBackColor = true;
@@ -109,23 +107,13 @@ namespace DesafioPubFuture
             // btnRemover
             // 
             this.btnRemover.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnRemover.Location = new System.Drawing.Point(80, 39);
+            this.btnRemover.Location = new System.Drawing.Point(230, 3);
             this.btnRemover.Name = "btnRemover";
-            this.btnRemover.Size = new System.Drawing.Size(94, 30);
+            this.btnRemover.Size = new System.Drawing.Size(94, 66);
             this.btnRemover.TabIndex = 2;
             this.btnRemover.Text = "Remover";
             this.btnRemover.UseVisualStyleBackColor = true;
             this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
-            // 
-            // btnTransferir
-            // 
-            this.btnTransferir.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnTransferir.Location = new System.Drawing.Point(180, 39);
-            this.btnTransferir.Name = "btnTransferir";
-            this.btnTransferir.Size = new System.Drawing.Size(94, 30);
-            this.btnTransferir.TabIndex = 3;
-            this.btnTransferir.Text = "Filtrar";
-            this.btnTransferir.UseVisualStyleBackColor = true;
             // 
             // Despesas
             // 
@@ -148,7 +136,6 @@ namespace DesafioPubFuture
         private System.Windows.Forms.Button btnCadastrar;
         private System.Windows.Forms.Button brnEditar;
         private System.Windows.Forms.Button btnRemover;
-        private System.Windows.Forms.Button btnTransferir;
         public System.Windows.Forms.DataGridView dtDespesas;
     }
 }

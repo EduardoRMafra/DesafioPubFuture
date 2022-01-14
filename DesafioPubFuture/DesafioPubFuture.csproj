@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="EditarContasForm.cs">
+    <Compile Update="Contas\EditarContasForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="CadastroContasForm - Cópia.Designer.cs">
