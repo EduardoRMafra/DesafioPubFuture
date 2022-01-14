@@ -176,6 +176,73 @@ namespace DesafioPubFuture
                 MessageBox.Show("Ocorreu um erro ao tentar excluir a receita!");
             }
         }
+
+        public static void NovaDespesa(double valor, DateTime pagamento, DateTime pagamentoEsperado, string tipoDespesa, int conta)
+        {
+            try
+            {
+                using (SQLiteCommand cmd = ConexaoBanco().CreateCommand())
+                {
+                    valor.ToString("F2");
+                    cmd.CommandText = "INSERT INTO tb_despesas (N_Valor, D_DataPagamento, D_DataPagamentoEsperado, T_Conta, T_TipoDespesa) VALUES (@valor, @pagamento, @pagamentoEsperado, @conta, @tipoDespesa)";
+                    cmd.Parameters.AddWithValue("@valor", valor);
+                    cmd.Parameters.AddWithValue("@pagamento", pagamento);
+                    cmd.Parameters.AddWithValue("@pagamentoEsperado", pagamentoEsperado);
+                    cmd.Parameters.AddWithValue("@conta", conta);
+                    cmd.Parameters.AddWithValue("@tipoDespesa", tipoDespesa);
+                    cmd.ExecuteNonQuery();
+                    ConexaoBanco().Close();
+                    AtualizarTabelaDespesas();
+                }
+            }
+            catch (Exception)
+            {
+                ConexaoBanco().Close();
+                MessageBox.Show("Ocorreu um erro ao adicionar uma nova receita!");
+            }
+        }
+        public static void EditarDespesa(int idDespesa, double valor, DateTime pagamento, DateTime pagamentoEsperado, string tipoDespesa, int conta)
+        {
+            try
+            {
+                using (SQLiteCommand cmd = ConexaoBanco().CreateCommand())
+                {
+                    cmd.CommandText = "UPDATE tb_despesas SET N_Valor = @valor, D_DataPagamento = @pagamento, D_DataPagamentoEsperado = @pagamentoEsperado, T_TipoDespesa = @tipoDespesa, T_Conta = @conta WHERE ID_Despesa = @id";
+                    cmd.Parameters.AddWithValue("@valor", valor);
+                    cmd.Parameters.AddWithValue("@pagamento", pagamento);
+                    cmd.Parameters.AddWithValue("@pagamentoEsperado", pagamentoEsperado);
+                    cmd.Parameters.AddWithValue("@conta", conta);
+                    cmd.Parameters.AddWithValue("@tipoDespesa", tipoDespesa);
+                    cmd.Parameters.AddWithValue("@id", idDespesa);
+                    cmd.ExecuteNonQuery();
+                    ConexaoBanco().Close();
+                    AtualizarTabelaDespesas();
+                }
+            }
+            catch (Exception)
+            {
+                ConexaoBanco().Close();
+                MessageBox.Show("Ocorreu um erro ao tentar editar a despesa!");
+            }
+        }
+        public static void DeletarDespesa(int id)
+        {
+            try
+            {
+                using (SQLiteCommand cmd = ConexaoBanco().CreateCommand())
+                {
+                    cmd.CommandText = "DELETE FROM tb_despesas WHERE ID_Despesa = " + id;
+                    cmd.ExecuteNonQuery();
+                    ConexaoBanco().Close();
+                    AtualizarTabelaDespesas();
+                }
+            }
+            catch (Exception)
+            {
+                ConexaoBanco().Close();
+                MessageBox.Show("Ocorreu um erro ao tentar excluir a receita!");
+            }
+        }
         static void AtualizarTabelaContas()
         {
             valorTotalConta();
@@ -209,7 +276,7 @@ namespace DesafioPubFuture
                     }
                     for (int d = 0; d < dtDespesa.Rows.Count; d++)
                     {
-                        valorTotalConta -= double.Parse(dtRecebimento.Rows[d][1].ToString()); ;
+                        valorTotalConta -= double.Parse(dtDespesa.Rows[d][1].ToString());
                     }
 
                     using (SQLiteCommand cmd = ConexaoBanco().CreateCommand())

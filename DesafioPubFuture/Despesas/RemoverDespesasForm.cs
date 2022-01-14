@@ -8,35 +8,35 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DesafioPubFuture.Receitas
+namespace DesafioPubFuture.Despesas
 {
-    public partial class RemoverReceitasForm : Form
+    public partial class RemoverDespesasForm : Form
     {
         DataTable dt = new DataTable();
-        public RemoverReceitasForm()
+        public RemoverDespesasForm()
         {
             InitializeComponent();
         }
 
         private void btnRemover_Click(object sender, EventArgs e)
         {
-            if (IdReceita.Value <= 0)
+            if (IdDespesa.Value <= 0)
             {
-                IdReceita.Focus();
-                MessageBox.Show("Por favor, utilize um número de receita existente!");
+                IdDespesa.Focus();
+                MessageBox.Show("Por favor, utilize um número de despesa existente!");
                 return;
             }
             try
             {
-                dt = BancoDados.ComandoTabela("SELECT * FROM tb_receitas WHERE ID_Receita=" + IdReceita.Value);
+                dt = BancoDados.ComandoTabela("SELECT * FROM tb_despesas WHERE ID_Despesa =" + IdDespesa.Value);
                 if (dt.Rows.Count == 1)
                 {
-                    BancoDados.DeletarReceita((int)IdReceita.Value);
+                    BancoDados.DeletarDespesa((int)IdDespesa.Value);
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Por favor, utilize um número de receita existente!");
+                    MessageBox.Show("Por favor, utilize um número de despesa existente!");
                 }
             }
             catch (Exception ex)

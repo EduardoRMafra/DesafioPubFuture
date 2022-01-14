@@ -31,7 +31,7 @@ namespace DesafioPubFuture.Receitas
         {
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.nReceita = new System.Windows.Forms.NumericUpDown();
+            this.nValorReceita = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.dRecebimento = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -48,7 +48,7 @@ namespace DesafioPubFuture.Receitas
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAddReceita = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nReceita)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nValorReceita)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nConta)).BeginInit();
@@ -75,7 +75,7 @@ namespace DesafioPubFuture.Receitas
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 180F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.nReceita, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.nValorReceita, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.dRecebimento, 3, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(78, 35);
@@ -85,18 +85,18 @@ namespace DesafioPubFuture.Receitas
             this.tableLayoutPanel1.Size = new System.Drawing.Size(669, 39);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // nReceita
+            // nValorReceita
             // 
-            this.nReceita.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.nReceita.Location = new System.Drawing.Point(63, 6);
-            this.nReceita.Maximum = new decimal(new int[] {
+            this.nValorReceita.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.nValorReceita.Location = new System.Drawing.Point(63, 6);
+            this.nValorReceita.Maximum = new decimal(new int[] {
             1410065407,
             2,
             0,
             0});
-            this.nReceita.Name = "nReceita";
-            this.nReceita.Size = new System.Drawing.Size(174, 27);
-            this.nReceita.TabIndex = 1;
+            this.nValorReceita.Name = "nValorReceita";
+            this.nValorReceita.Size = new System.Drawing.Size(174, 27);
+            this.nValorReceita.TabIndex = 1;
             // 
             // label2
             // 
@@ -296,7 +296,7 @@ namespace DesafioPubFuture.Receitas
             this.Text = "Cadastrar Receita";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nReceita)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nValorReceita)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -311,7 +311,7 @@ namespace DesafioPubFuture.Receitas
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.NumericUpDown nReceita;
+        private System.Windows.Forms.NumericUpDown nValorReceita;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dRecebimento;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;

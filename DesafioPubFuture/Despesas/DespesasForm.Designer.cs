@@ -103,6 +103,7 @@ namespace DesafioPubFuture.Despesas
             this.brnEditar.TabIndex = 1;
             this.brnEditar.Text = "Editar";
             this.brnEditar.UseVisualStyleBackColor = true;
+            this.brnEditar.Click += new System.EventHandler(this.brnEditar_Click);
             // 
             // btnRemover
             // 
@@ -115,7 +116,7 @@ namespace DesafioPubFuture.Despesas
             this.btnRemover.UseVisualStyleBackColor = true;
             this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
             // 
-            // Despesas
+            // DespesasForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -123,7 +124,7 @@ namespace DesafioPubFuture.Despesas
             this.Controls.Add(this.dtDespesas);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Despesas";
+            this.Name = "DespesasForm";
             this.Text = "Despesas";
             ((System.ComponentModel.ISupportInitialize)(this.dtDespesas)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);

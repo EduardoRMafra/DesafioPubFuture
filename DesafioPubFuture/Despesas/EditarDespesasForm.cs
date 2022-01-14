@@ -8,33 +8,28 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DesafioPubFuture.Receitas
+namespace DesafioPubFuture.Despesas
 {
-    public partial class EditarReceitasForm : Form
+    public partial class EditarDespesasForm : Form
     {
         DataTable dt = new DataTable();
-        public EditarReceitasForm()
+        public EditarDespesasForm()
         {
             InitializeComponent();
         }
-        private void btnEditarReceita_Click(object sender, EventArgs e)
+
+        private void btnEditarDespesa_Click(object sender, EventArgs e)
         {
-            if(IdReceita.Value <= 0)
+            if (IdDespesa.Value <= 0)
             {
-                IdReceita.Focus();
-                MessageBox.Show("Selecione uma receita existente!");
+                IdDespesa.Focus();
+                MessageBox.Show("Selecione uma despesa existente!");
                 return;
             }
-            if (nValorReceita.Value <= 0)
+            if (nValorDespesa.Value <= 0)
             {
-                nValorReceita.Focus();
-                MessageBox.Show("Selecione um valor de receita válida!");
-                return;
-            }
-            if (txtDescricao.Text.Trim() == "")
-            {
-                txtDescricao.Focus();
-                MessageBox.Show("Preencha o campo de descrição antes de pressionar o botão Editar!");
+                nValorDespesa.Focus();
+                MessageBox.Show("Selecione um valor de despesa válida!");
                 return;
             }
             if (nConta.Value <= 0)
@@ -43,22 +38,22 @@ namespace DesafioPubFuture.Receitas
                 MessageBox.Show("Por favor, utilize um número de conta existente!");
                 return;
             }
-            if (txtTipoReceita.Text != "Salário" && txtTipoReceita.Text != "Presente" && txtTipoReceita.Text != "Prêmios" && txtTipoReceita.Text != "Outros")
+            if (txtTipoDespesa.Text != "Alimentação" && txtTipoDespesa.Text != "Educação" && txtTipoDespesa.Text != "Lazer" && txtTipoDespesa.Text != "Moradia" && txtTipoDespesa.Text != "Roupa" && txtTipoDespesa.Text != "Saúde" && txtTipoDespesa.Text != "Transporte" && txtTipoDespesa.Text != "Outros")
             {
-                txtTipoReceita.Focus();
-                MessageBox.Show("Selecione um tipo de receita válida!");
+                txtTipoDespesa.Focus();
+                MessageBox.Show("Selecione um tipo de despesa válida!");
                 return;
             }
             try
             {
-                dt = BancoDados.ComandoTabela("SELECT * FROM tb_receitas WHERE ID_Receita=" + IdReceita.Value);
+                dt = BancoDados.ComandoTabela("SELECT * FROM tb_despesas WHERE ID_Despesa=" + IdDespesa.Value);
                 if (dt.Rows.Count == 1)
                 {
                     dt = new DataTable();
                     dt = BancoDados.ComandoTabela("SELECT * FROM tb_contas WHERE ID_Conta=" + nConta.Value);
                     if (dt.Rows.Count == 1)
                     {
-                        BancoDados.EditarReceita((int)IdReceita.Value, (double)nValorReceita.Value, dRecebimento.Value, dRecebimentoEsperado.Value, txtDescricao.Text, (int)nConta.Value, txtTipoReceita.Text);
+                        BancoDados.EditarDespesa((int)IdDespesa.Value, (double)nValorDespesa.Value, dPagamento.Value, dPagamentoEsperado.Value, txtTipoDespesa.Text, (int)nConta.Value);
                         this.Close();
                     }
                     else
@@ -68,7 +63,7 @@ namespace DesafioPubFuture.Receitas
                 }
                 else
                 {
-                    MessageBox.Show("Por favor, selecione um número de receita existente!");
+                    MessageBox.Show("Por favor, selecione um número de despesa existente!");
                 }
             }
             catch (Exception ex)
@@ -76,7 +71,8 @@ namespace DesafioPubFuture.Receitas
                 MessageBox.Show("Occoreu um erro: " + ex.Message);
             }
         }
-        private void btnCancelar_Click(object sender, EventArgs e)
+
+        private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
         }

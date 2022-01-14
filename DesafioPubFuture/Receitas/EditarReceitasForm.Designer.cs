@@ -34,7 +34,6 @@ namespace DesafioPubFuture.Receitas
             this.btnEditarReceita = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
-            this.nConta = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
             this.txtTipoReceita = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -43,19 +42,20 @@ namespace DesafioPubFuture.Receitas
             this.dRecebimentoEsperado = new System.Windows.Forms.DateTimePicker();
             this.txtDescricao = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.nReceita = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dRecebimento = new System.Windows.Forms.DateTimePicker();
-            this.label7 = new System.Windows.Forms.Label();
             this.IdReceita = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
+            this.dRecebimento = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.nValorReceita = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            this.nConta = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nConta)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nReceita)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IdReceita)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nValorReceita)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nConta)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel4
@@ -69,7 +69,7 @@ namespace DesafioPubFuture.Receitas
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(201, 34);
             this.tableLayoutPanel4.TabIndex = 10;
             // 
@@ -105,8 +105,8 @@ namespace DesafioPubFuture.Receitas
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.Controls.Add(this.nConta, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.label5, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.nConta, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.label6, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.txtTipoReceita, 3, 0);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(78, 138);
@@ -125,19 +125,6 @@ namespace DesafioPubFuture.Receitas
             this.label5.Size = new System.Drawing.Size(51, 20);
             this.label5.TabIndex = 0;
             this.label5.Text = "Conta:";
-            // 
-            // nConta
-            // 
-            this.nConta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.nConta.Location = new System.Drawing.Point(63, 3);
-            this.nConta.Maximum = new decimal(new int[] {
-            1410065407,
-            2,
-            0,
-            0});
-            this.nConta.Name = "nConta";
-            this.nConta.Size = new System.Drawing.Size(114, 27);
-            this.nConta.TabIndex = 1;
             // 
             // label6
             // 
@@ -235,7 +222,7 @@ namespace DesafioPubFuture.Receitas
             this.tableLayoutPanel1.Controls.Add(this.label7, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.dRecebimento, 5, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 4, 0);
-            this.tableLayoutPanel1.Controls.Add(this.nReceita, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.nValorReceita, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.label1, 2, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(78, 35);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -243,58 +230,6 @@ namespace DesafioPubFuture.Receitas
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(681, 39);
             this.tableLayoutPanel1.TabIndex = 7;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(201, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Valor:";
-            // 
-            // nReceita
-            // 
-            this.nReceita.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.nReceita.Location = new System.Drawing.Point(253, 6);
-            this.nReceita.Maximum = new decimal(new int[] {
-            1410065407,
-            2,
-            0,
-            0});
-            this.nReceita.Name = "nReceita";
-            this.nReceita.Size = new System.Drawing.Size(144, 27);
-            this.nReceita.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(410, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(157, 20);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Data de Recebimento:";
-            // 
-            // dRecebimento
-            // 
-            this.dRecebimento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.dRecebimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dRecebimento.Location = new System.Drawing.Point(573, 6);
-            this.dRecebimento.Name = "dRecebimento";
-            this.dRecebimento.Size = new System.Drawing.Size(105, 27);
-            this.dRecebimento.TabIndex = 3;
-            // 
-            // label7
-            // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 9);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(61, 20);
-            this.label7.TabIndex = 4;
-            this.label7.Text = "Receita:";
             // 
             // IdReceita
             // 
@@ -308,6 +243,71 @@ namespace DesafioPubFuture.Receitas
             this.IdReceita.Name = "IdReceita";
             this.IdReceita.Size = new System.Drawing.Size(114, 27);
             this.IdReceita.TabIndex = 5;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 9);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(61, 20);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "Receita:";
+            // 
+            // dRecebimento
+            // 
+            this.dRecebimento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.dRecebimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dRecebimento.Location = new System.Drawing.Point(573, 6);
+            this.dRecebimento.Name = "dRecebimento";
+            this.dRecebimento.Size = new System.Drawing.Size(105, 27);
+            this.dRecebimento.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(410, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(157, 20);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Data de Recebimento:";
+            // 
+            // nValorReceita
+            // 
+            this.nValorReceita.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.nValorReceita.Location = new System.Drawing.Point(253, 6);
+            this.nValorReceita.Maximum = new decimal(new int[] {
+            1410065407,
+            2,
+            0,
+            0});
+            this.nValorReceita.Name = "nValorReceita";
+            this.nValorReceita.Size = new System.Drawing.Size(144, 27);
+            this.nValorReceita.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(201, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(46, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Valor:";
+            // 
+            // nConta
+            // 
+            this.nConta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.nConta.Location = new System.Drawing.Point(63, 3);
+            this.nConta.Maximum = new decimal(new int[] {
+            1410065407,
+            2,
+            0,
+            0});
+            this.nConta.Name = "nConta";
+            this.nConta.Size = new System.Drawing.Size(114, 27);
+            this.nConta.TabIndex = 6;
             // 
             // EditarReceitasForm
             // 
@@ -327,13 +327,13 @@ namespace DesafioPubFuture.Receitas
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nConta)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nReceita)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.IdReceita)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nValorReceita)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nConta)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -345,7 +345,6 @@ namespace DesafioPubFuture.Receitas
         private System.Windows.Forms.Button btnEditarReceita;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.NumericUpDown nConta;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox txtTipoReceita;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
@@ -355,10 +354,11 @@ namespace DesafioPubFuture.Receitas
         private System.Windows.Forms.TextBox txtDescricao;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown nReceita;
+        private System.Windows.Forms.NumericUpDown nValorReceita;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dRecebimento;
         private System.Windows.Forms.NumericUpDown IdReceita;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.NumericUpDown nConta;
     }
 }

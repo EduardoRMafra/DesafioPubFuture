@@ -20,12 +20,19 @@ namespace DesafioPubFuture.Despesas
         }
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-
+            CadastrarDespesasForm c = new CadastrarDespesasForm();
+            c.ShowDialog();
         }
 
+        private void brnEditar_Click(object sender, EventArgs e)
+        {
+            EditarDespesasForm ed = new EditarDespesasForm();
+            ed.ShowDialog();
+        }
         private void btnRemover_Click(object sender, EventArgs e)
         {
-
+            RemoverDespesasForm r = new RemoverDespesasForm();
+            r.ShowDialog();
         }
     }
 }

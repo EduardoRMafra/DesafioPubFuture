@@ -8,40 +8,34 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DesafioPubFuture.Receitas
+namespace DesafioPubFuture.Despesas
 {
-    public partial class CadastrarReceitasForm : Form
+    public partial class CadastrarDespesasForm : Form
     {
         DataTable dt = new DataTable();
-        public CadastrarReceitasForm()
+        public CadastrarDespesasForm()
         {
             InitializeComponent();
         }
 
-        private void btnAddReceita_Click(object sender, EventArgs e)
+        private void btnAddDespesa_Click(object sender, EventArgs e)
         {
-            if (nValorReceita.Value <= 0)
+            if (nValorDespesa.Value <= 0)
             {
-                nValorReceita.Focus();
-                MessageBox.Show("Selecione um valor de receita válida!");
+                nValorDespesa.Focus();
+                MessageBox.Show("Selecione um valor de despesa válida!");
                 return;
             }
-            if (txtDescricao.Text.Trim() == "")
-            {
-                txtDescricao.Focus();
-                MessageBox.Show("Preencha o campo de descrição antes de pressionar o botão Adicionar!");
-                return;
-            }
-            if(nConta.Value <= 0)
+            if (nConta.Value <= 0)
             {
                 nConta.Focus();
                 MessageBox.Show("Por favor, utilize um número de conta existente!");
                 return;
             }
-            if (txtTipoReceita.Text != "Salário" && txtTipoReceita.Text != "Presente" && txtTipoReceita.Text != "Prêmios" && txtTipoReceita.Text != "Outros")
+            if (txtTipoDespesa.Text != "Alimentação" && txtTipoDespesa.Text != "Educação" && txtTipoDespesa.Text != "Lazer" && txtTipoDespesa.Text != "Moradia" && txtTipoDespesa.Text != "Roupa" && txtTipoDespesa.Text != "Saúde" && txtTipoDespesa.Text != "Transporte" && txtTipoDespesa.Text != "Outros")
             {
-                txtTipoReceita.Focus();
-                MessageBox.Show("Selecione um tipo de receita válida!");
+                txtTipoDespesa.Focus();
+                MessageBox.Show("Selecione um tipo de despesa válida!");
                 return;
             }
             try
@@ -49,7 +43,7 @@ namespace DesafioPubFuture.Receitas
                 dt = BancoDados.ComandoTabela("SELECT * FROM tb_contas WHERE ID_conta=" + nConta.Value);
                 if (dt.Rows.Count == 1)
                 {
-                    BancoDados.NovaReceita((double)nValorReceita.Value,dRecebimento.Value, dRecebimentoEsperado.Value, txtDescricao.Text, (int)nConta.Value,txtTipoReceita.Text);
+                    BancoDados.NovaDespesa((double)nValorDespesa.Value, dPagamento.Value, dPagamentoEsperado.Value, txtTipoDespesa.Text, (int)nConta.Value);
                     this.Close();
                 }
                 else
