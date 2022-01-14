@@ -108,6 +108,11 @@ namespace DesafioPubFuture
                 MessageBox.Show("Ocorreu um erro ao tentar excluir a conta!");
             }
         }
+        public static void Transferencia(int de, int para,double valor)
+        {
+            NovaDespesa(valor, DateTime.Now, DateTime.Now, "Outros", de);
+            NovaReceita(valor, DateTime.Now, DateTime.Now, "Transferência", para, "Outros");
+        }
         public static void NovaReceita(double valor, DateTime recebimento, DateTime recebimentoEsperado, string descricao, int conta, string tipoReceita)
         {
             try
@@ -245,17 +250,26 @@ namespace DesafioPubFuture
         }
         static void AtualizarTabelaContas()
         {
-            valorTotalConta();
-            Form1.dtContas.DataSource = BancoDados.ComandoTabela("SELECT * FROM tb_contas");    //atualizando as informações da tabela contas
+            if(Form1 != null)
+            {
+                valorTotalConta();
+                Form1.dtContas.DataSource = BancoDados.ComandoTabela("SELECT * FROM tb_contas");    //atualizando as informações da tabela contas
+            }
         }
         static void AtualizarTabelaReceitas()
         {
-            Form2.dtReceitas.DataSource = BancoDados.ComandoTabela("SELECT * FROM tb_receitas");    //atualizando as informações da tabela receitas
+            if(Form2 != null)
+            {
+                Form2.dtReceitas.DataSource = BancoDados.ComandoTabela("SELECT * FROM tb_receitas");    //atualizando as informações da tabela receitas
+            }
             AtualizarTabelaContas();
         }
         static void AtualizarTabelaDespesas()
         {
-            Form3.dtDespesas.DataSource = BancoDados.ComandoTabela("SELECT * FROM tb_despesas");    //atualizando as informações da tabela despesas
+            if(Form3 != null)
+            {
+                Form3.dtDespesas.DataSource = BancoDados.ComandoTabela("SELECT * FROM tb_despesas");    //atualizando as informações da tabela despesas
+            }
             AtualizarTabelaContas();
         }
         static void valorTotalConta()

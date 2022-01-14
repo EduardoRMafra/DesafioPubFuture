@@ -87,5 +87,11 @@ namespace DesafioPubFuture.Contas
             RemoverContasForm r = new RemoverContasForm();
             r.ShowDialog();
         }
+
+        private void btnTransferir_Click(object sender, EventArgs e)
+        {
+            TransferenciaEntreContasForm t = new TransferenciaEntreContasForm();
+            t.ShowDialog();
+        }
     }
 }
