@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
 using System.Data.SQLite;
 using System.Windows.Forms;
@@ -15,30 +11,32 @@ namespace DesafioPubFuture
     class BancoDados
     {
         public static SQLiteConnection Conexao;
+
+        //Permite o banco de dados ter acesso aos telas da Conta, Receita e Despesa
         static FormPrincipal Form1;
         static ReceitasForm Form2;
         static DespesasForm Form3;
 
         static string _path = Environment.CurrentDirectory + @"\db\dataB.db";    //caminho banco de dados, ele deve estar dentro da pasta \bin\Debug\net5.0-windows
-        public static SQLiteConnection ConexaoBanco()
+        public static SQLiteConnection ConexaoBanco()   //função que abre a conexão com o banco de dados e retorna a conexao
         {
             Conexao = new SQLiteConnection("Data Source="+ _path);
             Conexao.Open();
             return Conexao;
         }
-        public static DataTable ComandoTabela(string sql)
+        public static DataTable ComandoTabela(string sql)   //função que manda os comandos para o banco de dados retorna um datatable com o resultado
         {
             SQLiteDataAdapter da;
             DataTable dt = new DataTable();
 
             try
             {
-                using (SQLiteCommand cmd = ConexaoBanco().CreateCommand())
+                using (SQLiteCommand cmd = ConexaoBanco().CreateCommand())  //cria um comando
                 {
                     cmd.CommandText = sql;
-                    da = new SQLiteDataAdapter(cmd.CommandText, ConexaoBanco());
-                    da.Fill(dt);
-                    ConexaoBanco().Close();
+                    da = new SQLiteDataAdapter(cmd.CommandText, ConexaoBanco());    //aplica o comando no banco de dados e adapta para DataTable
+                    da.Fill(dt);    //preenche o datatable dt com o resultado no banco de dados
+                    ConexaoBanco().Close();     //fecha a conexao
                     return dt;
                 }
             }
@@ -52,15 +50,16 @@ namespace DesafioPubFuture
         {
             try
             {
-                using (SQLiteCommand cmd = ConexaoBanco().CreateCommand())
+                using (SQLiteCommand cmd = ConexaoBanco().CreateCommand())  //cria um comando
                 {
+                    //inserir na tabela contas do banco de dados os parametros informados
                     cmd.CommandText = "INSERT INTO tb_contas (N_Saldo, T_TipoConta, T_InstituicaoFinaiceira) VALUES (@saldo, @tipo, @instituicao)";
                     cmd.Parameters.AddWithValue("@saldo", 0);
                     cmd.Parameters.AddWithValue("@tipo", tipo);
                     cmd.Parameters.AddWithValue("@instituicao", instituicao);
-                    cmd.ExecuteNonQuery();
-                    ConexaoBanco().Close();
-                    AtualizarTabelaContas();
+                    cmd.ExecuteNonQuery();  //aplica o comando
+                    ConexaoBanco().Close(); //fecha conexao
+                    AtualizarTabelaContas();    //atualiza a tabela do aplicativo com base no banco de dados.
                 }
             }
             catch (Exception)
@@ -75,11 +74,12 @@ namespace DesafioPubFuture
             {
                 using (SQLiteCommand cmd = ConexaoBanco().CreateCommand())
                 {
+                    //modifica as informações contidas no banco de dados onde o ID_conta ser igual ao int id
                     cmd.CommandText = "UPDATE tb_contas SET T_TipoConta = @tipo, T_InstituicaoFinaiceira = @instituição WHERE ID_conta = @id";
                     cmd.Parameters.AddWithValue("@tipo", tipo);
                     cmd.Parameters.AddWithValue("@instituição", instituicao);
                     cmd.Parameters.AddWithValue("@id", id);
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQuery();  //aplica o comando
                     ConexaoBanco().Close();
                     AtualizarTabelaContas();
                 }
@@ -96,6 +96,7 @@ namespace DesafioPubFuture
             {
                 using (SQLiteCommand cmd = ConexaoBanco().CreateCommand())
                 {
+                    //deleta a conta que possui o int id
                     cmd.CommandText = "DELETE FROM tb_contas WHERE ID_conta = " + id;
                     cmd.ExecuteNonQuery();
                     ConexaoBanco().Close();
@@ -110,8 +111,8 @@ namespace DesafioPubFuture
         }
         public static void Transferencia(int de, int para,double valor)
         {
-            NovaDespesa(valor, DateTime.Now, DateTime.Now, "Outros", de);
-            NovaReceita(valor, DateTime.Now, DateTime.Now, "Transferência", para, "Outros");
+            NovaDespesa(valor, DateTime.Now, DateTime.Now, "Outros", de);   //cria uma nova despesa para a conta que transferiu dinheiro
+            NovaReceita(valor, DateTime.Now, DateTime.Now, "Transferência", para, "Outros");    //cria uma nova receita para a conta que recebeu dinheiro
         }
         public static void NovaReceita(double valor, DateTime recebimento, DateTime recebimentoEsperado, string descricao, int conta, string tipoReceita)
         {
@@ -119,7 +120,6 @@ namespace DesafioPubFuture
             {
                 using (SQLiteCommand cmd = ConexaoBanco().CreateCommand())
                 {
-                    valor.ToString("F2");
                     cmd.CommandText = "INSERT INTO tb_receitas (N_Valor, D_DataRecebimento, D_DataRecebimentoEsperado, T_Descrição, T_Conta, T_TipoReceita) VALUES (@valor, @recebimento, @recebimentoEsperado, @descrição, @conta, @tipoReceita)";
                     cmd.Parameters.AddWithValue("@valor", valor);
                     cmd.Parameters.AddWithValue("@recebimento", recebimento);
@@ -277,25 +277,25 @@ namespace DesafioPubFuture
             DataTable contas = new DataTable();
             try
             {
-                contas = ComandoTabela("SELECT * FROM tb_contas");
-                for(int c = 0; c < contas.Rows.Count; c++)
+                contas = ComandoTabela("SELECT * FROM tb_contas");  //pega todas as contas existentes no banco de dados
+                for(int c = 0; c < contas.Rows.Count; c++)  //verifica cada uma delas procurando nas tabelas de receita e despesa quais a conta possui
                 {
                     double valorTotalConta = 0.00;
                     DataTable dtRecebimento = ComandoTabela("SELECT * FROM tb_receitas WHERE T_conta =" + contas.Rows[c][0]);
                     DataTable dtDespesa = BancoDados.ComandoTabela("SELECT * FROM tb_despesas WHERE T_conta =" + contas.Rows[c][0]);
                     
-                    for (int r = 0; r < dtRecebimento.Rows.Count; r++)
+                    for (int r = 0; r < dtRecebimento.Rows.Count; r++)  //soma todas as receitas que a conta possui
                     {
                         valorTotalConta += double.Parse(dtRecebimento.Rows[r][1].ToString());
                     }
-                    for (int d = 0; d < dtDespesa.Rows.Count; d++)
+                    for (int d = 0; d < dtDespesa.Rows.Count; d++)  //Subtrai todas as despesas que a conta possui
                     {
                         valorTotalConta -= double.Parse(dtDespesa.Rows[d][1].ToString());
                     }
 
                     using (SQLiteCommand cmd = ConexaoBanco().CreateCommand())
                     {
-                        cmd.CommandText = "UPDATE tb_contas SET N_Saldo = '" + valorTotalConta + "' WHERE ID_conta = " + contas.Rows[c][0];
+                        cmd.CommandText = "UPDATE tb_contas SET N_Saldo = '" + valorTotalConta + "' WHERE ID_conta = " + contas.Rows[c][0]; //coloca esse valor final como saldo da conta
                         cmd.ExecuteNonQuery();
                         ConexaoBanco().Close();
                     }

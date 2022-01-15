@@ -220,7 +220,7 @@ namespace DesafioPubFuture.Contas
             this.Controls.Add(this.panelForm);
             this.Controls.Add(this.panelMenu);
             this.Name = "FormPrincipal";
-            this.Text = "Form1";
+            this.Text = "Gerenciador de finanças pessoais";
             this.panelMenu.ResumeLayout(false);
             this.panelForm.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtContas)).EndInit();

@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DesafioPubFuture.Despesas
@@ -15,9 +8,11 @@ namespace DesafioPubFuture.Despesas
         public DespesasForm()
         {
             InitializeComponent();
-            BancoDados.GetFormDespesas(this);
-            dtDespesas.DataSource = BancoDados.ComandoTabela("SELECT * FROM tb_despesas");
+            BancoDados.GetFormDespesas(this);   //envia ao banco de dados acesso ao DespesasForm
+            dtDespesas.DataSource = BancoDados.ComandoTabela("SELECT * FROM tb_despesas");  //atualiza a tabela com informações no banco de dados
         }
+
+        //Ao clicar nos botões abre uma nova janela para realizar a operação escolhida
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
             CadastrarDespesasForm c = new CadastrarDespesasForm();

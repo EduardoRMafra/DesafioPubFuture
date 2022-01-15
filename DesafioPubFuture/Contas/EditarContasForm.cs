@@ -1,25 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DesafioPubFuture.Contas
 {
     public partial class EditarContasForm : Form
     {
-        DataTable dt = new DataTable();
+        DataTable dt = new DataTable(); //inicia um datatable que será utilizado para a consulta de informações no banco de dados
         public EditarContasForm()
         {
             InitializeComponent();
         }
         private void btnEditarConta_Click(object sender, EventArgs e)
         {
-            if(nConta.Value <= 0)
+            //verifica todos os campos para ver se estão devidamente preenchidos e mostra um aviso caso não esteja.
+            if (nConta.Value <= 0)
             {
                 nConta.Focus();
                 MessageBox.Show("Por favor, utilize um número de conta existente!");
@@ -38,10 +33,10 @@ namespace DesafioPubFuture.Contas
             }
             try
             {
-                dt = BancoDados.ComandoTabela("SELECT * FROM tb_contas WHERE ID_conta="+nConta.Value);
+                dt = BancoDados.ComandoTabela("SELECT * FROM tb_contas WHERE ID_conta="+nConta.Value);  //procura pelo banco de dados de contas se existe uma conta com esse ID
                 if(dt.Rows.Count == 1)
                 {
-                    BancoDados.EditarConta((int)nConta.Value, txtTipoConta.Text, txtInstituicao.Text);
+                    BancoDados.EditarConta((int)nConta.Value, txtTipoConta.Text, txtInstituicao.Text);  //caso tenha, chama a função para editar ela e fecha a janela
                     this.Close();
                 }
                 else
@@ -56,7 +51,7 @@ namespace DesafioPubFuture.Contas
         }
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Close();   //fecha a janela
         }
     }
 }

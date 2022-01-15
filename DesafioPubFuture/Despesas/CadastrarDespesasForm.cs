@@ -1,18 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DesafioPubFuture.Despesas
 {
     public partial class CadastrarDespesasForm : Form
     {
-        DataTable dt = new DataTable();
+        DataTable dt = new DataTable(); //inicia um datatable que será utilizado para a consulta de informações no banco de dados
         public CadastrarDespesasForm()
         {
             InitializeComponent();
@@ -20,6 +14,7 @@ namespace DesafioPubFuture.Despesas
 
         private void btnAddDespesa_Click(object sender, EventArgs e)
         {
+            //verifica todos os campos para ver se estão devidamente preenchidos e mostra um aviso caso não esteja.
             if (nValorDespesa.Value <= 0)
             {
                 nValorDespesa.Focus();
@@ -40,9 +35,10 @@ namespace DesafioPubFuture.Despesas
             }
             try
             {
-                dt = BancoDados.ComandoTabela("SELECT * FROM tb_contas WHERE ID_conta=" + nConta.Value);
+                dt = BancoDados.ComandoTabela("SELECT * FROM tb_contas WHERE ID_conta=" + nConta.Value);    //procura pelo banco de dados de contas se existe uma conta com esse ID
                 if (dt.Rows.Count == 1)
                 {
+                    //caso tenha, chama a função NovaDespesa e fecha a janela
                     BancoDados.NovaDespesa((double)nValorDespesa.Value, dPagamento.Value, dPagamentoEsperado.Value, txtTipoDespesa.Text, (int)nConta.Value);
                     this.Close();
                 }

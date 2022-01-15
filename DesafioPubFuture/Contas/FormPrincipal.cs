@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DesafioPubFuture.Receitas;
 using DesafioPubFuture.Despesas;
@@ -19,9 +13,9 @@ namespace DesafioPubFuture.Contas
         public FormPrincipal()
         {
             InitializeComponent();
-            btnContas.BackColor = Color.Yellow;
-            BancoDados.GetFormPrincipal(this);
-            dtContas.DataSource = BancoDados.ComandoTabela("SELECT * FROM tb_contas");
+            btnContas.BackColor = Color.Yellow; //Muda a cor do botão Contas para mostrar que está selecionado
+            BancoDados.GetFormPrincipal(this);  //envia ao banco de dados acesso ao FormPrincipal
+            dtContas.DataSource = BancoDados.ComandoTabela("SELECT * FROM tb_contas");  //atualiza a tabela com informações no banco de dados
         }
 
         void MostrarForm(Form frm)
@@ -50,26 +44,27 @@ namespace DesafioPubFuture.Contas
             }
             frmAtivo.BackColor = Color.Yellow;
         }
-        private void btnContas_Click(object sender, EventArgs e)
+        private void btnContas_Click(object sender, EventArgs e)    //fecha os outros forms
         {
             BtnAtivo(btnContas);
             FecharFormAtivo();
         }
 
-        private void btnReceitas_Click(object sender, EventArgs e)
+        private void btnReceitas_Click(object sender, EventArgs e)  //fecha o form despesa caso aberto e ativa o receitas
         {
             BtnAtivo(btnReceitas);
             FecharFormAtivo();
             MostrarForm(new ReceitasForm());
         }
 
-        private void btnDespesas_Click(object sender, EventArgs e)
+        private void btnDespesas_Click(object sender, EventArgs e)  //fecha o form receitas caso aberto e ativa o despesa
         {
             BtnAtivo(btnDespesas);
             FecharFormAtivo();
             MostrarForm(new DespesasForm());
         }
 
+        //Ao clicar nos botões abre uma nova janela para realizar a operação escolhida
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
             CadastroContasForm c = new CadastroContasForm();

@@ -1,18 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DesafioPubFuture.Receitas
 {
     public partial class CadastrarReceitasForm : Form
     {
-        DataTable dt = new DataTable();
+        DataTable dt = new DataTable(); //inicia um datatable que será utilizado para a consulta de informações no banco de dados
         public CadastrarReceitasForm()
         {
             InitializeComponent();
@@ -20,6 +14,7 @@ namespace DesafioPubFuture.Receitas
 
         private void btnAddReceita_Click(object sender, EventArgs e)
         {
+            //verifica todos os campos para ver se estão devidamente preenchidos e mostra um aviso caso não esteja.
             if (nValorReceita.Value <= 0)
             {
                 nValorReceita.Focus();
@@ -46,9 +41,10 @@ namespace DesafioPubFuture.Receitas
             }
             try
             {
-                dt = BancoDados.ComandoTabela("SELECT * FROM tb_contas WHERE ID_conta=" + nConta.Value);
+                dt = BancoDados.ComandoTabela("SELECT * FROM tb_contas WHERE ID_conta=" + nConta.Value);    //procura pelo banco de dados de contas se existe uma conta com esse ID
                 if (dt.Rows.Count == 1)
                 {
+                    //caso tenha, chama a função NovaReceita e fecha a janela
                     BancoDados.NovaReceita((double)nValorReceita.Value,dRecebimento.Value, dRecebimentoEsperado.Value, txtDescricao.Text, (int)nConta.Value,txtTipoReceita.Text);
                     this.Close();
                 }
